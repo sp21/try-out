@@ -3,16 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { routing } from './app.routing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    routing,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
