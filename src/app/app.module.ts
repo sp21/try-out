@@ -7,18 +7,22 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { routing } from './app.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DraggableModalComponent } from './components/draggable-modal/draggable-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadImageComponent,
-    NavigationBarComponent
+    NavigationBarComponent,    
+    DraggableModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     routing,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,23 @@
 <p>{{name}}</p>
-<input #image type="file" (change)="handleFileInput($event.target.files)"/>
+<input #image type="file" (change)="handleFileInput($event.target.files)" />
 <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+<div class="container">
+    <form #registrationForm="ngForm" (ngSubmit)="submitForm(registrationForm)" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="EmailId" class="col-sm-3 control-label">EmailId</label>
+            <div class="col-sm-9">
+                <input type="email" id="EmailId" name="Email" placeholder="EmailId" class="form-control" autofocus
+                    ngModel>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" class="btn" name="Register" value="Register" style="background-color:green;color:white"
+                class="form-control">
+        </div>
+        <div class="col-sm-2">
+
+            <input class="col-sm-2" type="reset" name="Reset" value="Reset" style="background-color:green;color:white"
+                class="form-control">
+        </div>
+    </form>
+</div>

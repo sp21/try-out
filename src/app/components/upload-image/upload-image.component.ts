@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-image',
@@ -25,5 +26,10 @@ export class UploadImageComponent implements OnInit {
 
     }
     reader.readAsDataURL(this.fileToUpload);
+  }
+  submitForm(form:NgForm){
+    if(form.value.Email==='shreyas'){
+      console.log('Success');
+    }
   }
 }
