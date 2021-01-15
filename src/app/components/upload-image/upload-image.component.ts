@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalSComponent } from 'src/app/modal-s/modal-s.component';
 
 @Component({
   selector: 'app-upload-image',
@@ -7,23 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadImageComponent implements OnInit {
 
-  constructor() { }
-  name="shreyas";
-  fileToUpload:any;
-  imageUrl:any;
+  constructor(private modalService: NgbModal) { }
+  name = "shreyas";
+  fileToUpload: any;
+  imageUrl: any;
   ngOnInit(): void {
   }
-  handleFileInput(file:FileList){
+  handleFileInput(file: FileList) {
     console.log(file);
-    this.fileToUpload=file.item(0);
+    this.fileToUpload = file.item(0);
 
     //show image preview
-    let reader=new FileReader();
-    reader.onload=(event:any)=>{
-      
-      this.imageUrl=event.target.result;
+    let reader = new FileReader();
+    reader.onload = (event: any) => {
+
+      this.imageUrl = event.target.result;
+
 
     }
     reader.readAsDataURL(this.fileToUpload);
+    const modalRef = this.modalService.open(ModalSComponent, {
+      // scrollable: true,
+      // windowClass: 'customClass',
+      // keyboard: false,
+      // backdrop: 'static'
+    });
+    modalRef.result.then(
+      result => {
+        console.log(result);
+      },
+      reason => { }
+    );
   }
 }
+

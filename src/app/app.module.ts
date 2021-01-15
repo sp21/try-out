@@ -8,11 +8,15 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { routing } from './app.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ModalSComponent } from './modal-s/modal-s.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     UploadImageComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+
+    ModalSComponent
   ],
   imports: [
     BrowserModule,
