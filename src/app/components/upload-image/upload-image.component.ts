@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalSComponent } from 'src/app/modal-s/modal-s.component';
 
@@ -40,6 +41,23 @@ export class UploadImageComponent implements OnInit {
       },
       reason => { }
     );
+  }
+  submitForm(form: NgForm) {
+    if (form.value.Email === 'shreyas') {
+      console.log('Success');
+      const modalRef = this.modalService.open(ModalSComponent, {
+        // scrollable: true,
+        // windowClass: 'customClass',
+        // keyboard: false,
+        // backdrop: 'static'
+      });
+      modalRef.result.then(
+        result => {
+          console.log(result);
+        },
+        reason => { }
+      );
+    }
   }
 }
 
