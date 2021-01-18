@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ModalSComponent } from 'src/app/modal-s/modal-s.component';
+import { ModalConfig } from '../config/modal-config';
+import { DraggableModalComponent } from '../draggable-modal/draggable-modal.component';
 
 @Component({
   selector: 'app-upload-image',
@@ -29,34 +31,20 @@ export class UploadImageComponent implements OnInit {
 
     }
     reader.readAsDataURL(this.fileToUpload);
-    const modalRef = this.modalService.open(ModalSComponent, {
-      // scrollable: true,
-      // windowClass: 'customClass',
-      // keyboard: false,
-      // backdrop: 'static'
-    });
-    modalRef.result.then(
-      result => {
-        console.log(result);
-      },
-      reason => { }
-    );
+
   }
+  modalOptions: NgbModalOptions = ModalConfig;
+  modalRef: any;
   submitForm(form: NgForm) {
     if (form.value.Email === 'shreyas') {
       console.log('Success');
-      const modalRef = this.modalService.open(ModalSComponent, {
-        // scrollable: true,
-        // windowClass: 'customClass',
-        // keyboard: false,
-        // backdrop: 'static'
-      });
-      modalRef.result.then(
-        result => {
-          console.log(result);
-        },
-        reason => { }
-      );
+      this.modalRef = this.modalService.open(DraggableModalComponent, this.modalOptions);
+      this.modalRef.componentInstance.title = 'Drag Me!';
+      this.modalRef.componentInstance.message = 'Try dragging this modal around using the modal header!';
+      this.modalRef.componentInstance.onSubmitSubject
+        .subscribe((res: boolean) => {
+          console.log(res);
+        });
     }
   }
 }
